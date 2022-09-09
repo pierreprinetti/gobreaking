@@ -1,0 +1,20 @@
+name: 'gobreaking'
+description: 'Detect breaking changes in a Go repository'
+inputs:
+  base:
+    description: 'Base branch'
+    required: false
+    default: '.'
+  new:
+    description: 'New branch'
+    required: false
+    default: '.'
+outputs:
+  verdict:
+    description: A message detailing the outcome of the inspection.
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.base }}
+    - ${{ inputs.new }}
